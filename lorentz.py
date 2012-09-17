@@ -12,7 +12,7 @@ from glwidget import GLDrawingArea
 
 from scene import Scene
 
-ui_file = "empty.ui"
+ui_file = "lorentz.ui"
 
 class App(object):
 	"""Application main class"""
@@ -39,7 +39,7 @@ class App(object):
 
 		self.drawing_area = GLDrawingArea(glconfig)
 		self.drawing_area.set_events( gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.BUTTON_RELEASE_MASK | gtk.gdk.BUTTON1_MOTION_MASK | gtk.gdk.BUTTON2_MOTION_MASK |gtk.gdk.BUTTON3_MOTION_MASK )
-		self.drawing_area.set_size_request(320,240)
+		self.drawing_area.set_size_request(640,480)
 
 		builder.get_object("vbox1").pack_start(self.drawing_area)
 
@@ -51,8 +51,7 @@ class App(object):
 		win_main.connect('key-release-event', self._on_key_released )
 
 		self.scene = Scene( self.fov , .01 , self.near , self.far )
-		self.drawing_area.add( self.scene , ( 0,0,.5,1) )
-		self.drawing_area.add( self.scene , (.5,0,.5,1) )
+		self.drawing_area.add( self.scene , (0,0,1,1) )
 
 		print 'Scene added'
 
